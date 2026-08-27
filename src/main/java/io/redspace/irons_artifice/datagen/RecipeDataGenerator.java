@@ -439,6 +439,24 @@ public class RecipeDataGenerator extends RecipeProvider {
                 .define('#', commonTag("ingots/iron"))
                 .unlockedBy("has_precursor", this.has(ItemRegistry.BLACKPOWDER))
                 .save(this.output);
+        // Heavy Bolt
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ItemRegistry.HEAVY_BOLT_MODIFIER.get())
+                .pattern(" I ")
+                .pattern("IBI")
+                .pattern(" I ")
+                .define('I', commonTag("ingots/iron"))
+                .define('B', ItemRegistry.BULLET)
+                .unlockedBy("has_precursor", this.has(ItemRegistry.BULLET))
+                .save(this.output);
+        // Leech
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ItemRegistry.LEECH_MODIFIER.get())
+                .pattern(" G ")
+                .pattern("RBR")
+                .define('G', Items.GHAST_TEAR)
+                .define('R', Items.REDSTONE)
+                .define('B', ItemRegistry.BULLET)
+                .unlockedBy("has_precursor", this.has(ItemRegistry.BULLET))
+                .save(this.output);
     }
 
     private static TagKey<Item> commonTag(String path) {

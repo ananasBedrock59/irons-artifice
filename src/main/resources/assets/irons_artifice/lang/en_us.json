@@ -48,6 +48,8 @@
   "item.irons_artifice.tricorne.ability": "First Shot from a Full Magazine does +%d%% Damage",
   "item.irons_artifice.seeking_powder_modifier": "Seeking Powder Modifier",
   "item.irons_artifice.scope_attachment_modifier": "Scope Attachment Modifier",
+  "item.irons_artifice.leech_modifier": "Leech Modifier",
+  "item.irons_artifice.heavy_bolt_modifier": "Heavy Bolt Modifier",
   "item.irons_artifice.bayonet_attachment_modifier": "Bayonet Attachment Modifier",
 
   "container.irons_artifice.gun": "Gun",
@@ -91,6 +93,7 @@
   "irons_artifice.modifier.infinity": "%s%% Reduced Chance to consume Ammo",
   "irons_artifice.modifier.scope": "Enables Scoping",
   "irons_artifice.modifier.bayonet": "Enables Bayonet Charge",
+  "irons_artifice.modifier.leech": "When empty, spend %s Heart to fire",
 
   "irons_artifice.value_modifier.plus": "+%s %s",
   "irons_artifice.value_modifier.minus": "-%s %s",

@@ -19,7 +19,9 @@ import io.redspace.irons_artifice.modifier.modifiers.GasVentModifier;
 import io.redspace.irons_artifice.modifier.modifiers.GunOilModifier;
 import io.redspace.irons_artifice.modifier.modifiers.HairTriggerModifier;
 import io.redspace.irons_artifice.modifier.modifiers.HeavyModifier;
+import io.redspace.irons_artifice.modifier.modifiers.HeavyBoltModifier;
 import io.redspace.irons_artifice.modifier.modifiers.IncendiaryTipModifier;
+import io.redspace.irons_artifice.modifier.modifiers.LeechModifier;
 import io.redspace.irons_artifice.modifier.modifiers.MechanicalAccelerator;
 import io.redspace.irons_artifice.modifier.modifiers.MechanicalRepeaterModifier;
 import io.redspace.irons_artifice.modifier.modifiers.OverchargedPowderModifier;
@@ -123,6 +125,10 @@ public final class ItemRegistry {
             "scope_attachment_modifier", properties -> new ModifierItem(properties.stacksTo(1), new SpyglassAttachmentModifier()));
     public static final DeferredItem<ModifierItem> BAYONET_ATTACHMENT_MODIFIER = ITEMS.registerItem(
             "bayonet_attachment_modifier", properties -> new ModifierItem(properties.stacksTo(1), new BayonetAttachmentModifier()));
+    public static final DeferredItem<ModifierItem> LEECH_MODIFIER = ITEMS.registerItem(
+            "leech_modifier", properties -> new ModifierItem(properties.stacksTo(1), new LeechModifier()));
+    public static final DeferredItem<ModifierItem> HEAVY_BOLT_MODIFIER = ITEMS.registerItem(
+            "heavy_bolt_modifier", properties -> new ModifierItem(properties.stacksTo(1), new HeavyBoltModifier()));
 
     //    public static final DeferredItem<ModifierItem> FAIRY_DUST = ITEMS.registerItem(
     //            "fairy_dust_modifier", properties -> new ModifierItem(properties.stacksTo(1), new FairyDustModifier()));
