@@ -113,6 +113,7 @@
   "irons_artifice.tooltip.modifiers": "Modifiers:",
   "irons_artifice.tooltip.refunded_ammo": "Refunded %s ammo!",
   "irons_artifice.tooltip.accelerated_percent": "%s%% Accelerated",
+  "irons_artifice.tooltip.max_range": "%s Max Range",
 
   "death.attack.irons_artifice.bullet": "%1$s was shot by %2$s",
   "death.attack.irons_artifice.bullet.item": "%1$s was shot by %2$s using %3$s",
