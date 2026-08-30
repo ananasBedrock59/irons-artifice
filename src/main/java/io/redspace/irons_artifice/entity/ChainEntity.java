@@ -26,7 +26,26 @@ public class ChainEntity extends Entity {
     public static final float BREAK_RANGE = 16f;
     public static final int DURATION = 200;
     public static final float STRENGTH = 0.05f;
-    public static final int VISUAL_WARMUP_TIME = 3;
+    public static final int VISUAL_WARMUP_TIME = 5;
+
+    public void setMaxRange(float maxRange) {
+        this.maxRange = maxRange;
+    }
+
+    public void setPrimaryStrength(float primaryStrength) {
+        this.primaryStrength = primaryStrength;
+    }
+
+    public void setSecondaryStrength(float secondaryStrength) {
+        this.secondaryStrength = secondaryStrength;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    private float maxRange, primaryStrength, secondaryStrength;
+    private int duration;
 
     private static final EntityDataAccessor<Integer> DATA_FIRST_ID =
             SynchedEntityData.defineId(ChainEntity.class, EntityDataSerializers.INT);
@@ -42,6 +61,10 @@ public class ChainEntity extends Entity {
 
     public ChainEntity(EntityType<? extends ChainEntity> type, Level level) {
         super(type, level);
+        this.maxRange = BREAK_RANGE;
+        this.primaryStrength = STRENGTH;
+        this.secondaryStrength = STRENGTH;
+        this.duration = DURATION;
         this.noPhysics = true;
     }
 
@@ -100,28 +123,31 @@ public class ChainEntity extends Entity {
             return;
         }
 
-        Vec3 firstCenter = first.getBoundingBox().getCenter();
-        Vec3 secondCenter = second.getBoundingBox().getCenter();
-        setPos(firstCenter.add(secondCenter).scale(0.5));
-
+        setPos(midpoint(first, second));
         if (!level().isClientSide()) {
+            Vec3 firstCenter = first.getBoundingBox().getCenter();
+            Vec3 secondCenter = second.getBoundingBox().getCenter();
             double distSq = firstCenter.distanceToSqr(secondCenter);
-            if (tickCount > DURATION || distSq > BREAK_RANGE * BREAK_RANGE) {
+            if (tickCount > duration || distSq > maxRange * maxRange) {
                 breakWithEffects(firstCenter, secondCenter);
                 return;
             }
-            applySpring(first, position());
-            applySpring(second, position());
+            if (primaryStrength != 0) {
+                applySpring(first, position(), primaryStrength);
+            }
+            if (secondaryStrength != 0) {
+                applySpring(second, position(), secondaryStrength);
+            }
         }
     }
 
-    private void applySpring(LivingEntity entity, Vec3 center) {
+    private void applySpring(LivingEntity entity, Vec3 center, float strength) {
         Vec3 entityCenter = entity.getBoundingBox().getCenter();
         Vec3 delta = center.subtract(entityCenter);
         if (delta.lengthSqr() < 1.0E-8) {
             return;
         }
-        entity.setDeltaMovement(entity.getDeltaMovement().add(delta.multiply(Math.abs(delta.x), Math.abs(delta.y), Math.abs(delta.z)).scale(STRENGTH)));
+        entity.setDeltaMovement(entity.getDeltaMovement().add(delta.multiply(Math.abs(delta.x), Math.abs(delta.y), Math.abs(delta.z)).scale(strength)));
         entity.hurtMarked = true;
         if (entity.getDeltaMovement().y >= 0) {
             entity.resetFallDistance();

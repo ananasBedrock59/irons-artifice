@@ -18,6 +18,7 @@ import io.redspace.irons_artifice.modifier.modifiers.FrozenJacketModifier;
 import io.redspace.irons_artifice.modifier.modifiers.GasVentModifier;
 import io.redspace.irons_artifice.modifier.modifiers.GunOilModifier;
 import io.redspace.irons_artifice.modifier.modifiers.HairTriggerModifier;
+import io.redspace.irons_artifice.modifier.modifiers.HarpoonTestModifier;
 import io.redspace.irons_artifice.modifier.modifiers.HeavyModifier;
 import io.redspace.irons_artifice.modifier.modifiers.IncendiaryTipModifier;
 import io.redspace.irons_artifice.modifier.modifiers.MechanicalAccelerator;
@@ -123,7 +124,8 @@ public final class ItemRegistry {
             "scope_attachment_modifier", properties -> new ModifierItem(properties.stacksTo(1), new SpyglassAttachmentModifier()));
     public static final DeferredItem<ModifierItem> BAYONET_ATTACHMENT_MODIFIER = ITEMS.registerItem(
             "bayonet_attachment_modifier", properties -> new ModifierItem(properties.stacksTo(1), new BayonetAttachmentModifier()));
-
+    public static final DeferredItem<ModifierItem> HARPOON_MODIFIER = ITEMS.registerItem(
+            "harpoon_modifier", properties -> new ModifierItem(properties.stacksTo(1), new HarpoonTestModifier()));
     //    public static final DeferredItem<ModifierItem> FAIRY_DUST = ITEMS.registerItem(
     //            "fairy_dust_modifier", properties -> new ModifierItem(properties.stacksTo(1), new FairyDustModifier()));
 
