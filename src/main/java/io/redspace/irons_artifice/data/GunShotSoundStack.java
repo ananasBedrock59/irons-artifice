@@ -37,6 +37,18 @@ public class GunShotSoundStack implements Copyable<GunShotSoundStack> {
         this.baseSound = sound;
     }
 
+    public GunShotSoundSettings getEchoSound() {
+        return echoSound;
+    }
+
+    public GunShotSoundSettings getBaseSound() {
+        return baseSound;
+    }
+
+    public void setEchoSound(GunShotSoundSettings echoSound) {
+        this.echoSound = echoSound;
+    }
+
     public PlayableSound getDryFireSound() {
         return dryFireSound;
     }
