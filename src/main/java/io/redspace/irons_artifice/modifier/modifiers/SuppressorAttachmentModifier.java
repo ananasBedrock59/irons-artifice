@@ -18,10 +18,13 @@ public class SuppressorAttachmentModifier implements GunModifier {
         GunShotSoundSettings baseSettings = gunShotSoundStack.getBaseSound();
         GunShotSoundSettings echoSettings = gunShotSoundStack.getEchoSound();
         gunShotSoundStack.setBaseSound(new GunShotSoundSettings(
-                gunShotSoundStack.getEchoSound().soundEvent(),
-                baseSettings.minPitch(), baseSettings.maxPitch(), baseSettings.start(), 0, baseSettings.end()
+                baseSettings.soundEvent(),
+                baseSettings.minPitch(), baseSettings.maxPitch(), -64, -32, 32
         ));
-        components.getOrCreate(ShotComponents.GUNSHOT_SOUND).setEchoSound(new GunShotSoundSettings(echoSettings.soundEvent(), 0, 0, 0, 0, 0));
+        gunShotSoundStack.setEchoSound(new GunShotSoundSettings(
+                gunShotSoundStack.getEchoSound().soundEvent(),
+                echoSettings.minPitch(), echoSettings.maxPitch(), baseSettings.start(), 0, baseSettings.end()
+        ));
         components.getOrCreate(ShotComponents.MUZZLE_FLASH).types().clear();
 
     }
